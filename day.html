@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Counting Training</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/dynamic-page.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Day Page</h1>
+    </header>
+    <div class="day-page">
+      <!-- Main content in the center -->
+      <div class="day-page-content">
+        <div class="header">
+          <button id="markDoneDay1" class="mark-done-button">
+            Mark as Done
+          </button>
+          <h2>Steps for Today:</h2>
+        </div>
+        <ol>
+          <!-- Steps will be dynamically populated -->
+        </ol>
+
+        <!-- Timer Section -->
+        <div class="timer">
+          <p>Timer: <span id="timer">15:00</span></p>
+        </div>
+        <div class="timer-controls">
+          <button id="startButton">Start</button>
+          <button id="pauseButton">Pause</button>
+          <button id="resetButton">Reset</button>
+        </div>
+
+        <!-- Footer Section with Back to Calendar Button -->
+        <div class="footer-container">
+          <button onclick="window.location.href='index.html'">
+            Back to Calendar
+          </button>
+        </div>
+      </div>
+
+      <!-- Card Section on the right -->
+      <div class="card-section">
+        <!-- Deck of Cards -->
+        <div class="deck-container" id="deck-container">
+          <div class="card-deck" id="card-deck"></div>
+        </div>
+
+        <!-- Drop Areas -->
+        <div class="drop-areas">
+          <div class="drop-area" id="drop-area-1"></div>
+          <div class="drop-area" id="drop-area-2"></div>
+          <div class="drop-area" id="drop-area-3"></div>
+        </div>
+
+        <!-- Shuffle Button -->
+        <button class="shuffle-button" onclick="shuffleDeck()">Shuffle Cards</button>
+      </div>
+    </div>
+
+    <script src="js/card-deck.js"></script>
+  </body>
+</html>

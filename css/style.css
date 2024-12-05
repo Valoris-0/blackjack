@@ -1,0 +1,533 @@
+/* General Styling */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #d9a7c7, #fffcdc);
+  color: #333;
+  height: 100vh; /* Ensure the body takes up the full height of the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack header and content vertically */
+}
+
+header {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Ensure header takes full width */
+  position: fixed; /* Fix header at the top */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure header is above other content */
+}
+
+header h1 {
+  font-size: 2.8rem;
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  padding: 30px;
+  justify-content: center;
+}
+
+.calendar div {
+  background: #ffffff;
+  border: 2px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 1.3rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.calendar div:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Highlight important days */
+.day-30 {
+  background: #ff5722 !important;
+  color: white;
+  font-weight: bold;
+  border: 3px solid #e64a19;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.day-highlight {
+  background: #ffc107;
+  color: #333;
+  font-weight: bold;
+  border: 2px solid #ffa000;
+  font-size: 1.4rem;
+}
+
+.day-page h1 {
+  color: #6a11cb;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.day-page h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Timer styling (keeping the same color for timer text) */
+.timer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 2rem;
+  color: #ff5722; /* Orange color for the timer text */
+  font-weight: bold;
+	margin: 1rem 0;
+}
+
+/* Timer buttons styling (same orange color as the timer text) */
+.timer-controls {
+  display: flex;
+  justify-content: center; /* Align buttons to the right */
+  gap: 1rem;
+  margin-top: 10px;
+  margin-bottom: 20px; /* Adjust spacing below the timer */
+
+}
+
+.timer-controls button {
+  padding: 10px 20px;
+  background: transparent;
+  background-color: #ff5722 !important; /* Explicitly set solid orange color */
+  color: white !important; /* Ensure the text is white */
+  border: none !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  transition: background-color 0.2s, transform 0.2s !important;
+}
+
+/* Ensure hover effect changes color, not to bright white */
+.timer-controls button:hover {
+  background: transparent;
+  background-color: #e64a19 !important; /* Slightly darker orange for hover effect */
+}
+
+.timer-controls button:active {
+  transform: scale(0.95) !important; /* Slightly shrink when clicked */
+  transition: transform 0.1s ease-out !important;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accordion styling */
+.accordion {
+  margin: 20px 0;
+}
+
+.accordion-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 1.2rem;
+  text-align: left;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 20px;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.accordion-content p {
+  margin: 15px 0;
+}
+
+/* When expanded */
+.accordion-item.active .accordion-content {
+  max-height: 200px; /* Adjust based on content length */
+  padding: 15px 20px;
+}
+
+/* Mark Done Button Updates */
+.mark-done-button {
+  padding: 10px 20px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Default beautiful background */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.mark-done-button:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb); /* Beautiful hover effect */
+  transform: scale(1.05);
+}
+
+.mark-done-button.completed {
+  color: white;
+  background-color: #4caf50; /* Green for completed state */
+}
+
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+ol {
+  margin-top: 20px;
+  padding-left: 20px; /* Optional indent for the steps */
+}
+
+.timer {
+  margin-top: 20px;
+}
+
+.footer-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-container button {
+  margin-top: 10px;
+}
+
+.completed-day {
+  background-color: #4caf50 !important; /* Green background for completed days */
+  color: white !important; /* White text for completed days */
+  font-weight: bold !important;
+  border: 2px solid #388e3c !important; /* Dark green border */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) !important; /* Subtle text shadow */
+  transition: background 0.3s ease, transform 0.2s ease !important;
+}
+
+.completed-day:hover {
+  transform: scale(1.1); /* Slight scale-up effect on hover */
+}
+
+/* Card Section on the Right */
+.card-section {
+  width: calc(25% - 40px); /* Card section takes up 1/4 of the screen minus padding */
+  height: calc(90% - 40px); /* Make it a little shorter to fit on the background square */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the top */
+  background-color: #fff;
+  border-radius: 20px; /* Rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  position: absolute; /* Lock it to the right-hand side */
+  right: 20px; /* Ensure 20px gap from the right side */
+  top: calc(80px + 20px); /* Ensure 20px gap from the bottom of the header */
+  bottom: 20px; /* Ensure 20px gap from the bottom */
+  left: auto; /* Ensure it doesn't stretch to the left */
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  width: 80px;
+  height: 120px;
+  background: #007bff;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: grab;
+  text-align: center;
+}
+
+.shuffle-button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.shuffle-button:hover {
+	background-color: #2575fc;
+}
+
+/* General Layout for the entire page */
+.day-page {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  width: 100%;
+  height: calc(100% - 80px); /* Adjust height to account for header */
+  padding: 2rem;
+  background: linear-gradient(135deg, #d9a7c7, #fffcdc); /* Match the background color */
+  box-sizing: border-box;
+  margin-top: 80px; /* Add margin to account for fixed header */
+}
+
+/* Main content section (left side) */
+.day-page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+  width: 25%; /* Center content takes up 1/4 of the screen */
+  height: 25%; /* Make it a square */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-right: 30px; /* Ensure at least 30px gap between content and shuffle section */
+}
+
+.card-section {
+  width: calc(25% - 40px); /* Card section takes up 1/4 of the screen minus padding */
+  height: calc(90% - 40px); /* Make it a little shorter to fit on the background square */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the top */
+  background-color: #fff;
+  border-radius: 20px; /* Rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  position: absolute; /* Lock it to the right-hand side */
+  right: 20px; /* Ensure 20px gap from the right side */
+  top: calc(80px + 20px); /* Ensure 20px gap from the bottom of the header */
+  bottom: 20px; /* Ensure 20px gap from the bottom */
+  left: auto; /* Ensure it doesn't stretch to the left */
+}
+
+.deck-container {
+  width: 100%; /* Make the deck container take full width */
+  height: 400px; /* Adjust height to make it a rectangle */
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+  padding-top: 50px; /* Add padding to move the deck down */
+}
+
+.card-deck {
+  width: 240px; /* Adjust width to make it twice its current size */
+  height: 320px; /* Adjust height to make it twice its current size */
+  background: url('path-to-your-card-back-pattern.jpg') center/cover;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.card-deck::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('path-to-your-card-back-pattern.jpg') center/cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translate(4px, 4px); /* Adjust shadow to match new size */
+  z-index: -1;
+}
+
+.card-deck::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('path-to-your-card-back-pattern.jpg') center/cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translate(8px, 8px); /* Adjust shadow to match new size */
+  z-index: -2;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  width: 80px;
+  height: 120px;
+  background: #007bff;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: grab;
+  text-align: center;
+}
+
+.shuffle-button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.shuffle-button:hover {
+	background-color: #2575fc;
+}
+
+/* General Layout */
+#page-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+}
+
+/* Middle Box */
+#middle-box {
+  width: 50%; /* 1/2 of the page */
+  height: 80%; /* Adjust as needed */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Right Box */
+#right-box {
+  width: 25%; /* 1/4 of the page */
+  height: 80%; /* Adjust as needed */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#shuffle-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: calc(100% - 50px); /* Adjust to leave space for the shuffle button */
+}
+
+/* Card Styling */
+.card {
+  width: 80px;
+  height: 120px;
+  background-color: #007bff;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  line-height: 120px;
+  font-size: 18px;
+  cursor: grab;
+}
+
