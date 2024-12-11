@@ -232,32 +232,32 @@ button:hover {
 
 .header {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between; /* Space between elements */
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 20px;
+  padding: 0 20px; /* Add padding to the left and right */
 }
 
-.header {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.header h2 {
+  flex: 1; /* Take up remaining space */
+  text-align: left; /* Align text to the left */
+}
+
+.mark-done-button {
+  margin-left: 20px; /* Add some space between the button and the text */
 }
 
 ol {
   margin-top: 20px;
   padding-left: 20px; /* Optional indent for the steps */
-}
-
-.timer {
-  margin-top: 20px;
+  text-align: left; /* Align steps to the left */
+  padding-right: 20px; /* Add padding to the right */
 }
 
 .footer-container {
-  text-align: center;
+  text-align: left; /* Align button to the left */
   margin-top: 20px;
+  padding-left: 20px; /* Add padding to the left */
 }
 
 .footer-container button {
@@ -279,22 +279,23 @@ ol {
 
 /* Card Section on the Right */
 .card-section {
-  width: calc(25% - 40px); /* Card section takes up 1/4 of the screen minus padding */
-  height: calc(90% - 40px); /* Make it a little shorter to fit on the background square */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Align content to the top */
-  background-color: #fff;
-  border-radius: 20px; /* Rounded edges */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  box-sizing: border-box;
-  position: absolute; /* Lock it to the right-hand side */
-  right: 20px; /* Ensure 20px gap from the right side */
-  top: calc(80px + 20px); /* Ensure 20px gap from the bottom of the header */
-  bottom: 20px; /* Ensure 20px gap from the bottom */
-  left: auto; /* Ensure it doesn't stretch to the left */
+  /* Remove the entire card section styles */
+  /* width: calc(25% - 40px); */
+  /* height: calc(90% - 40px); */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: flex-start; */
+  /* background-color: #fff; */
+  /* border-radius: 20px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  /* padding: 1.5rem; */
+  /* box-sizing: border-box; */
+  /* position: absolute; */
+  /* right: 20px; */
+  /* top: calc(80px + 20px); */
+  /* bottom: 20px; */
+  /* left: auto; */
 }
 
 .card-container {
@@ -302,6 +303,7 @@ ol {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  margin-top: 10px; /* Add some space above the container */
 }
 
 .card {
@@ -316,19 +318,6 @@ ol {
   font-size: 16px;
   cursor: grab;
   text-align: center;
-}
-
-.shuffle-button {
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.shuffle-button:hover {
-	background-color: #2575fc;
 }
 
 /* General Layout for the entire page */
@@ -350,116 +339,14 @@ ol {
   flex-direction: column;
   align-items: center; /* Center the content horizontally */
   justify-content: center; /* Center the content vertically */
-  width: 25%; /* Center content takes up 1/4 of the screen */
-  height: 25%; /* Make it a square */
+  width: 50%; /* Increase width to 50% */
+  height: 80%; /* Increase height to 80% */
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   margin-right: 30px; /* Ensure at least 30px gap between content and shuffle section */
-}
-
-.card-section {
-  width: calc(25% - 40px); /* Card section takes up 1/4 of the screen minus padding */
-  height: calc(90% - 40px); /* Make it a little shorter to fit on the background square */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Align content to the top */
-  background-color: #fff;
-  border-radius: 20px; /* Rounded edges */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  box-sizing: border-box;
-  position: absolute; /* Lock it to the right-hand side */
-  right: 20px; /* Ensure 20px gap from the right side */
-  top: calc(80px + 20px); /* Ensure 20px gap from the bottom of the header */
-  bottom: 20px; /* Ensure 20px gap from the bottom */
-  left: auto; /* Ensure it doesn't stretch to the left */
-}
-
-.deck-container {
-  width: 100%; /* Make the deck container take full width */
-  height: 400px; /* Adjust height to make it a rectangle */
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align content to the top */
-  padding-top: 50px; /* Add padding to move the deck down */
-}
-
-.card-deck {
-  width: 240px; /* Adjust width to make it twice its current size */
-  height: 320px; /* Adjust height to make it twice its current size */
-  background: url('path-to-your-card-back-pattern.jpg') center/cover;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.card-deck::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('path-to-your-card-back-pattern.jpg') center/cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transform: translate(4px, 4px); /* Adjust shadow to match new size */
-  z-index: -1;
-}
-
-.card-deck::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('path-to-your-card-back-pattern.jpg') center/cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transform: translate(8px, 8px); /* Adjust shadow to match new size */
-  z-index: -2;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.card {
-  width: 80px;
-  height: 120px;
-  background: #007bff;
-  border-radius: 8px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  cursor: grab;
-  text-align: center;
-}
-
-.shuffle-button {
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.shuffle-button:hover {
-	background-color: #2575fc;
 }
 
 /* General Layout */
@@ -529,5 +416,23 @@ ol {
   line-height: 120px;
   font-size: 18px;
   cursor: grab;
+}
+
+/* Drop Areas */
+.drop-areas {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.drop-area {
+  width: 80px;
+  height: 120px;
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 

@@ -320,7 +320,7 @@ function initializePage() {
   const day = urlParams.get("page");
 
   if (!day) {
-    console.error("No day specified");
+    window.location.href = 'index.html';
     return;
   }
 
@@ -359,11 +359,6 @@ function initializePage() {
 
   // Mark as done functionality
   setupMarkAsDone(day);
-
-  // Initialize cards, shuffle button, and drag-and-drop
-  initializeCards();
-  setupShuffleButton();
-  setupDragAndDrop();
 }
 
 // Timer Functionality
@@ -502,80 +497,6 @@ function updateCalendarButton(day, completed) {
       calendarButton.textContent = `Day ${day}`;
     }
   }
-}
-
-function initializeCards() {
-  const cardContainer = document.getElementById("card-container");
-  const cards = [];
-
-  // Generate a deck of cards
-  for (let i = 1; i <= 52; i++) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.textContent = "Card " + i; // Simplified for demo
-    card.draggable = true;
-
-    // Flip Card Logic
-    card.addEventListener("click", () => {
-      card.textContent = card.textContent === "Flipped" ? "Card " + i : "Flipped";
-    });
-
-    // Drag Logic
-    card.addEventListener("dragstart", (e) => {
-      e.dataTransfer.setData("text/plain", card.id);
-    });
-
-    cards.push(card);
-  }
-
-  // Append cards to the container
-  cards.forEach((card) => cardContainer.appendChild(card));
-}
-
-// Handle shuffle functionality
-function setupShuffleButton() {
-  const shuffleButton = document.getElementById("shuffle-button");
-  shuffleButton.addEventListener("click", () => {
-    const cardContainer = document.getElementById("card-container");
-    const cards = Array.from(cardContainer.children);
-
-    // Shuffle cards
-    cards.sort(() => Math.random() - 0.5);
-
-    // Clear and re-add shuffled cards
-    cardContainer.innerHTML = "";
-    cards.forEach((card) => cardContainer.appendChild(card));
-  });
-}
-
-function setupDragAndDrop() {
-  const pageContainer = document.getElementById("page-container");
-
-  pageContainer.addEventListener("dragover", (e) => {
-    e.preventDefault();
-  });
-
-  pageContainer.addEventListener("drop", (e) => {
-    e.preventDefault();
-    const cardId = e.dataTransfer.getData("text/plain");
-    const card = document.getElementById(cardId);
-
-    // Position the card where it was dropped
-    const x = e.clientX - card.offsetWidth / 2;
-    const y = e.clientY - card.offsetHeight / 2;
-
-    card.style.position = "absolute";
-    card.style.left = `${x}px`;
-    card.style.top = `${y}px`;
-  });
-}
-
-// Initialize everything
-function initializePage() {
-  // Other initialization code...
-  initializeCards();
-  setupShuffleButton();
-  setupDragAndDrop();
 }
 
 // Initialize page on load
